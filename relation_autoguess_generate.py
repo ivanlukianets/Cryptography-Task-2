@@ -4,10 +4,14 @@ def generate_strumok_relations(n_rounds=11, filename="strumok_11_ticks.txt"):
         f.write("connection relations\n")
 
         for t in range(n_rounds):
-            f.write(f"S_{t + 16}, S_{t + 13}, S_{t + 11}, S_{t}\n")
-            f.write(f"S_{t + 15}, R1_{t}, R2_{t}, S_{t}\n")
-            f.write(f"R1_{t + 1}, R2_{t}, S_{t + 13}\n")
-            f.write(f"R2_{t + 1}, R1_{t}\n")
+            f.write(f"S_{t+16}, S_{t+15}, S_{t+13}, S_{t+4}, S_{t}\n")
+            f.write(f"Z_{t}, S_{t+15}, R1_{t}, R2_{t}\n")
+            f.write(f"R1_{t+1}, R2_{t}, S_{t+15}\n")
+            f.write(f"R2_{t+1}, R1_{t}\n")
+
+        f.write("known\n")
+        for t in range(n_rounds):
+            f.write(f"Z_{t}\n")
 
         f.write("end\n")
 
